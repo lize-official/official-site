@@ -651,3 +651,28 @@ footer p {
   }
 
 }
+@media screen and (max-width: 600px) {
+
+  .song-card {
+    display: block !important;
+  }
+
+  .song-cover {
+    width: 200px !important;
+    height: 200px !important;
+    margin: 0 auto 18px !important;
+  }
+
+  .song-info {
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+
+  .song-card audio {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 16px auto 0 !important;
+  }
+}
