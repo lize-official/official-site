@@ -613,3 +613,14 @@ footer p {
   }
 
 }
+
+@media screen and (max-width: 600px) {
+
+  .main-visual {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 18px;
+  }
+
+}
