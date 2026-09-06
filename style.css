@@ -686,3 +686,71 @@ footer p {
   }
 
 }
+
+/* =========================
+   NEWS + SCHEDULE
+========================= */
+
+.news-schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 28px;
+}
+
+.news-column,
+.schedule-column {
+  min-width: 0;
+}
+
+.schedule-column {
+  padding-left: 28px;
+
+  border-left:
+    1px solid rgba(213, 43, 118, 0.35);
+}
+
+.schedule-column h3 {
+  margin: 0 0 12px;
+
+  color: #d95a91;
+
+  font-size: 16px;
+
+  font-weight: normal;
+
+  letter-spacing: 0.15em;
+}
+
+.schedule-column p {
+  padding: 12px 0;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+.schedule-column p:last-child {
+  border-bottom: none;
+}
+
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+  .news-schedule-grid {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .schedule-column {
+    padding-left: 0;
+    padding-top: 20px;
+
+    border-left: none;
+
+    border-top:
+      1px solid rgba(213, 43, 118, 0.35);
+  }
+
+}
