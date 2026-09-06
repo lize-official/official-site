@@ -587,17 +587,17 @@ footer p {
   }
 
   .main-visual {
-    width: 60%;
-    max-width: 60%;
+  width: 72%;
+  max-width: 72%;
 
-    height: auto;
+  height: auto;
 
-    display: block;
+  display: block;
 
-    margin: 0 auto 18px;
+  margin: 0 auto 18px;
 
-    object-fit: contain;
-  }
+  object-fit: contain;
+}
 
   nav {
     margin-top: 22px;
