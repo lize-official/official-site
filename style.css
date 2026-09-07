@@ -799,3 +799,80 @@ footer p {
   }
 
 }
+
+footer {
+  text-align: center;
+}
+
+.site-credit {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+}
+
+/* =========================
+   利用規約ページ
+========================= */
+
+.sub-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.sub-page h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sub-page-box {
+  padding: 32px;
+
+  background:
+    rgba(20, 12, 17, 0.90);
+
+  border:
+    1px solid rgba(213, 43, 118, 0.45);
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35);
+
+  line-height: 1.9;
+}
+
+.sub-page-box h3 {
+  margin-top: 34px;
+  margin-bottom: 12px;
+
+  padding-bottom: 8px;
+
+  color: #e55a91;
+
+  border-bottom:
+    1px solid rgba(213, 43, 118, 0.35);
+
+  letter-spacing: 0.08em;
+}
+
+.sub-page-box p {
+  margin: 0 0 20px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .sub-page {
+    margin: 35px auto;
+
+    padding: 0 14px;
+  }
+
+  .sub-page-box {
+    padding: 22px 18px;
+
+    font-size: 14px;
+  }
+
+}
