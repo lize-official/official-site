@@ -876,3 +876,19 @@ footer {
   }
 
 }
+
+/* =========================
+   SITE CONTACT
+========================= */
+
+.site-contact-note {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.site-contact-note a {
+  color: #e55a91;
+  font-weight: bold;
+}
