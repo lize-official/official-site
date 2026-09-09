@@ -79,38 +79,39 @@
 
   <main>
 
-<!-- =========================
-     NEWS / SCHEDULE
-========================= -->
 
-<section id="news">
+    <!-- =========================
+         NEWS / SCHEDULE
+    ========================= -->
 
-  <h2>
-    NEWS
-  </h2>
+    <section id="news">
 
-  <div class="news-schedule-grid">
+      <h2>
+        NEWS
+      </h2>
 
-    <!-- NEWS -->
-    <div class="news-column" id="news-list">
-    </div>
+      <div class="news-schedule-grid">
 
-    <!-- SCHEDULE -->
-    <div class="schedule-column">
+        <!-- NEWS -->
+        <div class="news-column" id="news-list">
+        </div>
 
-      <h3>
-        SCHEDULE
-      </h3>
+        <!-- SCHEDULE -->
+        <div class="schedule-column">
 
-      <div id="schedule-list">
+          <h3>
+            SCHEDULE
+          </h3>
+
+          <div id="schedule-list">
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
+    </section>
 
-  </div>
-
-</section>
-    
 
     <!-- =========================
          PROFILE
@@ -364,6 +365,55 @@
 
       memoryList.appendChild(div);
     });
+  </script>
+
+  <script>
+    function setFiveItemScroll(container) {
+      if (!container) return;
+
+      const items = Array.from(container.children);
+
+      container.scrollTop = 0;
+
+      if (items.length <= 5) {
+        container.style.maxHeight = "";
+        return;
+      }
+
+      const first = items[0];
+      const fifth = items[4];
+
+      const height =
+        fifth.offsetTop +
+        fifth.offsetHeight -
+        first.offsetTop;
+
+      container.style.maxHeight = `${height}px`;
+    }
+
+    function updateFiveItemScrolls() {
+      setFiveItemScroll(
+        document.getElementById("news-list")
+      );
+
+      setFiveItemScroll(
+        document.getElementById("schedule-list")
+      );
+
+      setFiveItemScroll(
+        document.getElementById("memory-list")
+      );
+    }
+
+    window.addEventListener(
+      "load",
+      updateFiveItemScrolls
+    );
+
+    window.addEventListener(
+      "resize",
+      updateFiveItemScrolls
+    );
   </script>
 
 </body>

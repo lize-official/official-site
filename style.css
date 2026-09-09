@@ -894,29 +894,43 @@ footer {
 }
 
 /* =========================
-   NEWS / SCHEDULE SCROLL
+   NEWS / SCHEDULE / MEMORY SCROLL
 ========================= */
 
 #news-list,
-#schedule-list {
+#schedule-list,
+#memory-list {
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 10px;
   scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
 
 #news-list::-webkit-scrollbar,
-#schedule-list::-webkit-scrollbar {
+#schedule-list::-webkit-scrollbar,
+#memory-list::-webkit-scrollbar {
   width: 6px;
 }
 
 #news-list::-webkit-scrollbar-thumb,
-#schedule-list::-webkit-scrollbar-thumb {
+#schedule-list::-webkit-scrollbar-thumb,
+#memory-list::-webkit-scrollbar-thumb {
   background: rgba(229, 90, 145, 0.55);
   border-radius: 10px;
 }
 
 #news-list::-webkit-scrollbar-track,
-#schedule-list::-webkit-scrollbar-track {
+#schedule-list::-webkit-scrollbar-track,
+#memory-list::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.04);
+}
+
+#news-list,
+#schedule-list,
+#memory-list {
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(229, 90, 145, 0.55)
+    rgba(255, 255, 255, 0.04);
 }
