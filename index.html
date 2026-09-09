@@ -90,47 +90,23 @@
         NEWS
       </h2>
 
-
       <div class="news-schedule-grid">
 
-
         <!-- NEWS -->
-
-        <div class="news-column">
-
-          <p>
-            <strong>2026.08.30</strong><br>
-            フォロワー100人達成
-          </p>
-
-          <p>
-            <strong>2026.08.08</strong><br>
-            活動開始
-          </p>
-
+        <div class="news-column" id="news-list">
         </div>
 
-
         <!-- SCHEDULE -->
-
         <div class="schedule-column">
 
           <h3>
             SCHEDULE
           </h3>
 
-          <p>
-            <strong>2026.09.09</strong><br>
-            Birthday
-          </p>
-
-          <p>
-            <strong>COMING SOON</strong><br>
-            配信予定はこちらに追加
-          </p>
+          <div id="schedule-list">
+          </div>
 
         </div>
-
 
       </div>
 
@@ -200,45 +176,8 @@
             MEMORY
           </h3>
 
-
-          <div class="memory-item">
-
-            <span>
-              2026.08.08
-            </span>
-
-            <p>
-              活動開始
-            </p>
-
+          <div id="memory-list">
           </div>
-
-
-          <div class="memory-item">
-
-            <span>
-              2026.08.30
-            </span>
-
-            <p>
-              フォロワー100人達成
-            </p>
-
-          </div>
-
-
-          <div class="memory-item">
-
-            <span>
-              第21回シードカップ
-            </span>
-
-            <p>
-              5位
-            </p>
-
-          </div>
-
 
         </div>
 
@@ -374,6 +313,59 @@
 
   </footer>
 
+
+  <!-- =========================
+       AUTO DATA
+  ========================= -->
+
+  <script src="./news-data.js"></script>
+  <script src="./schedule-data.js"></script>
+  <script src="./memory-data.js"></script>
+
+  <script>
+    const newsList = document.getElementById("news-list");
+
+    newsItems.forEach((item) => {
+      const p = document.createElement("p");
+
+      p.innerHTML = `
+        <strong>${item.date}</strong><br>
+        ${item.text}
+      `;
+
+      newsList.appendChild(p);
+    });
+
+
+    const scheduleList = document.getElementById("schedule-list");
+
+    scheduleItems.forEach((item) => {
+      const p = document.createElement("p");
+
+      p.innerHTML = `
+        <strong>${item.date}</strong><br>
+        ${item.text}
+      `;
+
+      scheduleList.appendChild(p);
+    });
+
+
+    const memoryList = document.getElementById("memory-list");
+
+    memoryItems.forEach((item) => {
+      const div = document.createElement("div");
+
+      div.className = "memory-item";
+
+      div.innerHTML = `
+        <span>${item.date}</span>
+        <p>${item.text}</p>
+      `;
+
+      memoryList.appendChild(div);
+    });
+  </script>
 
 </body>
 
