@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>GALLERY | 顎砕きの凛零--lize-- Official Website</title>
+
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  >
+</head>
+
+
+<body>
+
+  <header>
+
+    <img
+      src="./images/header-banner.png"
+      alt="顎砕きの凛零--lize--"
+      class="header-banner"
+    >
+
+    <h1>
+      顎砕きの凛零--lize--
+    </h1>
+
+    <p class="header-copy">
+      博多弁の配信者
+    </p>
+
+
+    <nav>
+      <a href="./index.html#news">NEWS</a>
+      <a href="./index.html#profile">PROFILE</a>
+      <a href="./index.html#music">MUSIC</a>
+      <a href="./gallery.html">GALLERY</a>
+      <a href="./index.html#link">LINK</a>
+      <a href="./terms.html">利用規約</a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <section class="gallery-page">
+
+      <h2>GALLERY</h2>
+
+      <p class="gallery-text">
+        顎砕きの凛零--lize--の活動で使用している<br>
+        イラストやビジュアルを掲載しています。
+      </p>
+
+
+      <!-- =========================
+           GALLERY一覧
+      ========================= -->
+
+      <div
+        class="gallery-page-grid"
+        id="gallery-list"
+      ></div>
+
+
+      <!-- =========================
+           ページ送り
+      ========================= -->
+
+      <div
+        class="pagination"
+        id="pagination"
+      ></div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footer-nav">
+
+      <a href="./index.html">
+        HOME
+      </a>
+
+      <span>|</span>
+
+      <a href="./terms.html">
+        利用規約
+      </a>
+
+    </div>
+
+    <p>
+      © 顎砕きの凛零--lize--
+    </p>
+
+    <p>
+      Website designed by 鴛鴦トワ
+    </p>
+
+  </footer>
+
+
+  <script src="./gallery-data.js"></script>
+
+  <script>
+
+    const ITEMS_PER_PAGE = 6;
+
+    const galleryList =
+      document.getElementById("gallery-list");
+
+    const pagination =
+      document.getElementById("pagination");
+
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    let currentPage =
+      Number(params.get("page")) || 1;
+
+
+    const totalPages =
+      Math.max(
+        1,
+        Math.ceil(
+          galleryItems.length / ITEMS_PER_PAGE
+        )
+      );
+
+
+    if (currentPage < 1) {
+      currentPage = 1;
+    }
+
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+
+
+    /* =========================
+       GALLERY表示
+    ========================= */
+
+    function renderGallery() {
+
+      galleryList.innerHTML = "";
+
+
+      const start =
+        (currentPage - 1) * ITEMS_PER_PAGE;
+
+      const end =
+        start + ITEMS_PER_PAGE;
+
+      const pageItems =
+        galleryItems.slice(start, end);
+
+
+      pageItems.forEach(
+        (fileName, index) => {
+
+          const imagePath =
+            `./images/${fileName}`;
+
+
+          const link =
+            document.createElement("a");
+
+          link.href =
+            imagePath;
+
+          link.target =
+            "_blank";
+
+          link.rel =
+            "noopener noreferrer";
+
+
+          const image =
+            document.createElement("img");
+
+          image.src =
+            imagePath;
+
+          image.alt =
+            `顎砕きの凛零--lize-- Gallery ${
+              galleryItems.length -
+              (start + index)
+            }`;
+
+          image.loading =
+            "lazy";
+
+
+          link.appendChild(image);
+
+          galleryList.appendChild(link);
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       ページ送り
+    ========================= */
+
+    function createPageLink(
+      text,
+      page,
+      className = ""
+    ) {
+
+      const link =
+        document.createElement("a");
+
+      link.textContent =
+        text;
+
+      link.href =
+        `./gallery.html?page=${page}`;
+
+      if (className) {
+        link.className =
+          className;
+      }
+
+      return link;
+
+    }
+
+
+    function renderPagination() {
+
+      pagination.innerHTML = "";
+
+
+      if (totalPages <= 1) {
+        return;
+      }
+
+
+      if (currentPage > 1) {
+
+        pagination.appendChild(
+          createPageLink(
+            "← 前へ",
+            currentPage - 1,
+            "pagination-prev"
+          )
+        );
+
+      }
+
+
+      for (
+        let page = 1;
+        page <= totalPages;
+        page++
+      ) {
+
+        if (page === currentPage) {
+
+          const current =
+            document.createElement("span");
+
+          current.textContent =
+            page;
+
+          current.className =
+            "pagination-current";
+
+          pagination.appendChild(current);
+
+        } else {
+
+          pagination.appendChild(
+            createPageLink(
+              page,
+              page
+            )
+          );
+
+        }
+
+      }
+
+
+      if (currentPage < totalPages) {
+
+        pagination.appendChild(
+          createPageLink(
+            "次へ →",
+            currentPage + 1,
+            "pagination-next"
+          )
+        );
+
+      }
+
+    }
+
+
+    renderGallery();
+    renderPagination();
+
+  </script>
+
+
+</body>
+
+</html>
