@@ -1224,4 +1224,28 @@ footer {
     font-size: 13px;
   }
 
+ /* =========================
+   GALLERY PAGE HEADER
+========================= */
+
+.gallery-page-header-image {
+  display: block;
+
+  width: min(100%, 700px);
+  height: auto;
+
+  margin: 0 auto 24px;
+
+  object-fit: contain;
+}
+
+@media screen and (max-width: 600px) {
+
+  .gallery-page-header-image {
+    width: 85%;
+
+    margin-bottom: 18px;
+  }
+
+} 
 }
