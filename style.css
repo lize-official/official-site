@@ -936,13 +936,113 @@ footer {
 }
 
 /* =========================
+   GALLERY - HOME
+========================= */
+
+.gallery-text {
+  margin-bottom: 22px;
+}
+
+.gallery-grid {
+  display: flex;
+  gap: 16px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 4px 2px 14px;
+
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-grid a {
+  display: block;
+
+  flex: 0 0 220px;
+
+  overflow: hidden;
+
+  background: #1c1017;
+
+  border:
+    1px solid rgba(189, 43, 105, 0.35);
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.25);
+
+  scroll-snap-align: start;
+}
+
+.gallery-grid img {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.gallery-grid a:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-grid::-webkit-scrollbar-thumb {
+  background:
+    rgba(229, 90, 145, 0.45);
+
+  border-radius: 10px;
+}
+
+.gallery-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gallery-more {
+  margin: 20px 0 0;
+
+  text-align: right;
+}
+
+.gallery-more a {
+  color: #d95a91;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  letter-spacing: 0.08em;
+
+  transition: 0.2s;
+}
+
+.gallery-more a:hover {
+  color: #ffffff;
+}
+
+
+/* =========================
    GALLERY PAGE
 ========================= */
 
 .gallery-page {
-  width: min(92%, 1000px);
+  width: min(92%, 900px);
+
   margin: 0 auto;
+
   padding: 60px 0 80px;
+
   text-align: center;
 }
 
@@ -950,8 +1050,9 @@ footer {
   margin-bottom: 12px;
 }
 
-.gallery-text {
+.gallery-page .gallery-text {
   margin-bottom: 32px;
+
   line-height: 1.9;
 }
 
@@ -962,7 +1063,9 @@ footer {
   display: grid;
 
   grid-template-columns:
-    repeat(3, 1fr);
+    repeat(3, minmax(0, 220px));
+
+  justify-content: center;
 
   gap: 20px;
 
@@ -972,15 +1075,20 @@ footer {
 .gallery-page-grid a {
   display: block;
 
-  overflow: hidden;
+  width: 100%;
+  max-width: 220px;
 
-  border-radius: 14px;
+  overflow: hidden;
 
   background: #1c1017;
 
+  border:
+    1px solid rgba(189, 43, 105, 0.35);
+
+  border-radius: 14px;
+
   box-shadow:
-    0 6px 18px
-    rgba(0, 0, 0, 0.25);
+    0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .gallery-page-grid img {
@@ -1002,7 +1110,7 @@ footer {
 
 
 /* =========================
-   ページ送り
+   PAGINATION
 ========================= */
 
 .pagination {
@@ -1039,8 +1147,7 @@ footer {
   color: inherit;
 
   border:
-    1px solid
-    rgba(255, 255, 255, 0.18);
+    1px solid rgba(255, 255, 255, 0.18);
 }
 
 .pagination a:hover {
@@ -1048,7 +1155,7 @@ footer {
 }
 
 .pagination-current {
-  color: #fff;
+  color: #ffffff;
 
   background: #a5225d;
 }
@@ -1061,25 +1168,44 @@ footer {
 
 
 /* =========================
-   GALLERY スマホ
+   GALLERY - MOBILE
 ========================= */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 600px) {
+
+  .gallery-grid {
+    gap: 12px;
+  }
+
+  .gallery-grid a {
+    flex-basis: 160px;
+  }
+
+  .gallery-more {
+    text-align: center;
+  }
 
   .gallery-page {
-    padding:
-      40px 0 60px;
+    width: 100%;
+
+    padding: 24px 0 40px;
+  }
+
+  .gallery-page .gallery-text {
+    font-size: 14px;
   }
 
   .gallery-page-grid {
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2, minmax(0, 150px));
 
     gap: 12px;
+
+    margin-top: 24px;
   }
 
-  .gallery-text {
-    font-size: 14px;
+  .gallery-page-grid a {
+    max-width: 150px;
   }
 
   .pagination {
@@ -1098,32 +1224,4 @@ footer {
     font-size: 13px;
   }
 
-  /* GALLERY画像サイズ調整 */
-
-.gallery-page-grid {
-  grid-template-columns:
-    repeat(3, minmax(0, 220px));
-
-  justify-content: center;
-}
-
-.gallery-page-grid a {
-  width: 100%;
-  max-width: 220px;
-}
-
-@media (max-width: 768px) {
-
-  .gallery-page-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 160px));
-
-    gap: 12px;
-  }
-
-  .gallery-page-grid a {
-    max-width: 160px;
-  }
-
-}
 }
