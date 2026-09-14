@@ -60,6 +60,10 @@
         MUSIC
       </a>
 
+      <a href="./gallery.html">
+        GALLERY
+      </a>
+
       <a href="#link">
         LINK
       </a>
@@ -93,8 +97,12 @@
       <div class="news-schedule-grid">
 
         <!-- NEWS -->
-        <div class="news-column" id="news-list">
+        <div
+          class="news-column"
+          id="news-list"
+        >
         </div>
+
 
         <!-- SCHEDULE -->
         <div class="schedule-column">
@@ -340,11 +348,22 @@
   <script src="./schedule-data.js"></script>
   <script src="./memory-data.js"></script>
 
+
+  <!-- =========================
+       NEWS / SCHEDULE / MEMORY
+  ========================= -->
+
   <script>
-    const newsList = document.getElementById("news-list");
+
+    const newsList =
+      document.getElementById(
+        "news-list"
+      );
 
     newsItems.forEach((item) => {
-      const p = document.createElement("p");
+
+      const p =
+        document.createElement("p");
 
       p.innerHTML = `
         <strong>${item.date}</strong><br>
@@ -352,13 +371,19 @@
       `;
 
       newsList.appendChild(p);
+
     });
 
 
-    const scheduleList = document.getElementById("schedule-list");
+    const scheduleList =
+      document.getElementById(
+        "schedule-list"
+      );
 
     scheduleItems.forEach((item) => {
-      const p = document.createElement("p");
+
+      const p =
+        document.createElement("p");
 
       p.innerHTML = `
         <strong>${item.date}</strong><br>
@@ -366,15 +391,22 @@
       `;
 
       scheduleList.appendChild(p);
+
     });
 
 
-    const memoryList = document.getElementById("memory-list");
+    const memoryList =
+      document.getElementById(
+        "memory-list"
+      );
 
     memoryItems.forEach((item) => {
-      const div = document.createElement("div");
 
-      div.className = "memory-item";
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "memory-item";
 
       div.innerHTML = `
         <span>${item.date}</span>
@@ -382,57 +414,101 @@
       `;
 
       memoryList.appendChild(div);
+
     });
+
   </script>
 
+
+  <!-- =========================
+       5件表示 + スクロール
+  ========================= -->
+
   <script>
-    function setFiveItemScroll(container) {
-      if (!container) return;
 
-      const items = Array.from(container.children);
+    function setFiveItemScroll(
+      container
+    ) {
 
-      container.scrollTop = 0;
-
-      if (items.length <= 5) {
-        container.style.maxHeight = "";
+      if (!container) {
         return;
       }
 
-      const first = items[0];
-      const fifth = items[4];
+
+      const items =
+        Array.from(
+          container.children
+        );
+
+
+      container.scrollTop = 0;
+
+
+      if (items.length <= 5) {
+
+        container.style.maxHeight =
+          "";
+
+        return;
+
+      }
+
+
+      const first =
+        items[0];
+
+      const fifth =
+        items[4];
+
 
       const height =
         fifth.offsetTop +
         fifth.offsetHeight -
         first.offsetTop;
 
-      container.style.maxHeight = `${height}px`;
+
+      container.style.maxHeight =
+        `${height}px`;
+
     }
+
 
     function updateFiveItemScrolls() {
+
       setFiveItemScroll(
-        document.getElementById("news-list")
+        document.getElementById(
+          "news-list"
+        )
       );
 
       setFiveItemScroll(
-        document.getElementById("schedule-list")
+        document.getElementById(
+          "schedule-list"
+        )
       );
 
       setFiveItemScroll(
-        document.getElementById("memory-list")
+        document.getElementById(
+          "memory-list"
+        )
       );
+
     }
+
 
     window.addEventListener(
       "load",
       updateFiveItemScrolls
     );
 
+
     window.addEventListener(
       "resize",
       updateFiveItemScrolls
     );
+
   </script>
+
 
 </body>
 
