@@ -34,7 +34,7 @@
     <img
       src="./images/header-banner.png"
       alt="顎砕きの凛零--lize--"
-      class="main-visual"
+      class="gallery-page-header-image"
     >
 
     <h1>
@@ -48,15 +48,15 @@
 
     <nav>
 
-      <a href="./index.html#news">
+      <a href="./index.html?from=gallery#news">
         NEWS
       </a>
 
-      <a href="./index.html#profile">
+      <a href="./index.html?from=gallery#profile">
         PROFILE
       </a>
 
-      <a href="./index.html#music">
+      <a href="./index.html?from=gallery#music">
         MUSIC
       </a>
 
@@ -64,7 +64,7 @@
         GALLERY
       </a>
 
-      <a href="./index.html#link">
+      <a href="./index.html?from=gallery#link">
         LINK
       </a>
 
@@ -82,11 +82,6 @@
   ========================= -->
 
   <main>
-
-
-    <!-- =========================
-         GALLERY
-    ========================= -->
 
     <section class="gallery-page">
 
@@ -115,7 +110,6 @@
 
     </section>
 
-
   </main>
 
 
@@ -127,7 +121,7 @@
 
     <div class="footer-menu">
 
-      <a href="./index.html">
+      <a href="./index.html?from=gallery">
         HOME
       </a>
 
@@ -151,45 +145,24 @@
   </footer>
 
 
-  <!-- =========================
-       GALLERY DATA
-  ========================= -->
-
   <script src="./gallery-data.js"></script>
 
-
-  <!-- =========================
-       GALLERY
-  ========================= -->
 
   <script>
 
     const ITEMS_PER_PAGE = 6;
 
-
     const galleryList =
-      document.getElementById(
-        "gallery-list"
-      );
-
+      document.getElementById("gallery-list");
 
     const pagination =
-      document.getElementById(
-        "pagination"
-      );
-
+      document.getElementById("pagination");
 
     const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
+      new URLSearchParams(window.location.search);
 
     let currentPage =
-      Number(
-        params.get("page")
-      ) || 1;
-
+      Number(params.get("page")) || 1;
 
     const totalPages =
       Math.max(
@@ -200,35 +173,26 @@
         )
       );
 
-
     if (currentPage < 1) {
       currentPage = 1;
     }
-
 
     if (currentPage > totalPages) {
       currentPage = totalPages;
     }
 
 
-    /* =========================
-       画像一覧
-    ========================= */
-
     function renderGallery() {
 
       galleryList.innerHTML = "";
-
 
       const start =
         (currentPage - 1) *
         ITEMS_PER_PAGE;
 
-
       const end =
         start +
         ITEMS_PER_PAGE;
-
 
       const pageItems =
         galleryItems.slice(
@@ -236,20 +200,14 @@
           end
         );
 
-
       pageItems.forEach(
         (fileName, index) => {
-
 
           const imagePath =
             `./images/${fileName}`;
 
-
           const link =
-            document.createElement(
-              "a"
-            );
-
+            document.createElement("a");
 
           link.href =
             imagePath;
@@ -260,16 +218,11 @@
           link.rel =
             "noopener noreferrer";
 
-
           const image =
-            document.createElement(
-              "img"
-            );
-
+            document.createElement("img");
 
           image.src =
             imagePath;
-
 
           image.alt =
             `顎砕きの凛零--lize-- Gallery ${
@@ -277,15 +230,12 @@
               (start + index)
             }`;
 
-
           image.loading =
             "lazy";
-
 
           link.appendChild(
             image
           );
-
 
           galleryList.appendChild(
             link
@@ -297,10 +247,6 @@
     }
 
 
-    /* =========================
-       ページ送り
-    ========================= */
-
     function createPageLink(
       text,
       page,
@@ -308,26 +254,18 @@
     ) {
 
       const link =
-        document.createElement(
-          "a"
-        );
-
+        document.createElement("a");
 
       link.textContent =
         text;
 
-
       link.href =
         `./gallery.html?page=${page}`;
 
-
       if (className) {
-
         link.className =
           className;
-
       }
-
 
       return link;
 
@@ -339,11 +277,9 @@
       pagination.innerHTML =
         "";
 
-
       if (totalPages <= 1) {
         return;
       }
-
 
       if (currentPage > 1) {
 
@@ -359,7 +295,6 @@
 
       }
 
-
       for (
         let page = 1;
         page <= totalPages;
@@ -371,18 +306,13 @@
         ) {
 
           const current =
-            document.createElement(
-              "span"
-            );
-
+            document.createElement("span");
 
           current.textContent =
             page;
 
-
           current.className =
             "pagination-current";
-
 
           pagination.appendChild(
             current
@@ -402,7 +332,6 @@
         }
 
       }
-
 
       if (
         currentPage <
@@ -425,7 +354,6 @@
 
 
     renderGallery();
-
     renderPagination();
 
   </script>
