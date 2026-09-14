@@ -48,23 +48,23 @@
 
     <nav>
 
-      <a href="#news" data-tab="news">
+      <a href="#news">
         NEWS
       </a>
 
-      <a href="#profile" data-tab="profile">
+      <a href="#profile">
         PROFILE
       </a>
 
-      <a href="#music" data-tab="music">
+      <a href="#music">
         MUSIC
       </a>
 
-      <a href="#gallery" data-tab="gallery">
+      <a href="#gallery">
         GALLERY
       </a>
 
-      <a href="#link" data-tab="link">
+      <a href="#link">
         LINK
       </a>
 
@@ -96,13 +96,11 @@
 
       <div class="news-schedule-grid">
 
-        <div
-          class="news-column"
-          id="news-list"
-        >
+        <!-- NEWS -->
+        <div class="news-column" id="news-list">
         </div>
 
-
+        <!-- SCHEDULE -->
         <div class="schedule-column">
 
           <h3>
@@ -140,17 +138,12 @@
           </h3>
 
           <p class="profile-role">
-            NeoBright所属 / 博多弁の配信者
+            博多弁の配信者
           </p>
 
           <p>
             ゲーム・アニメ・映画・ドラム・心霊を好み、<br>
-            博多弁を交えた配信を中心に活動。
-          </p>
-
-          <p>
-            2026年10月1日より<br>
-            Palmuにて配信スタート。
+            AVVYを中心に活動する博多弁の配信者。
           </p>
 
         </div>
@@ -161,11 +154,6 @@
           <p>
             <span>Birthday</span>
             9月9日
-          </p>
-
-          <p>
-            <span>Office</span>
-            NeoBright
           </p>
 
           <p>
@@ -249,11 +237,17 @@
 
           </audio>
 
+
         </div>
 
       </div>
 
     </section>
+
+
+    <!-- =========================
+         LINK
+    ========================= -->
 
 
     <!-- =========================
@@ -271,28 +265,20 @@
         イラストやビジュアル。
       </p>
 
-
       <div
         class="gallery-grid"
         id="home-gallery-list"
       >
       </div>
 
-
       <p class="gallery-more">
-
         <a href="./gallery.html">
           GALLERYをもっと見る →
         </a>
-
       </p>
 
     </section>
 
-
-    <!-- =========================
-         LINK
-    ========================= -->
 
     <section id="link">
 
@@ -321,14 +307,6 @@
           rel="noopener noreferrer"
         >
           AVVY
-        </a>
-
-        <a
-          href="https://app.palmu.jp/users/9ee84ae25bd443fdbd23"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Palmu
         </a>
 
       </div>
@@ -380,22 +358,11 @@
   <script src="./memory-data.js"></script>
   <script src="./gallery-data.js"></script>
 
-
-  <!-- =========================
-       NEWS / SCHEDULE / MEMORY
-  ========================= -->
-
   <script>
-
-    const newsList =
-      document.getElementById(
-        "news-list"
-      );
+    const newsList = document.getElementById("news-list");
 
     newsItems.forEach((item) => {
-
-      const p =
-        document.createElement("p");
+      const p = document.createElement("p");
 
       p.innerHTML = `
         <strong>${item.date}</strong><br>
@@ -403,19 +370,13 @@
       `;
 
       newsList.appendChild(p);
-
     });
 
 
-    const scheduleList =
-      document.getElementById(
-        "schedule-list"
-      );
+    const scheduleList = document.getElementById("schedule-list");
 
     scheduleItems.forEach((item) => {
-
-      const p =
-        document.createElement("p");
+      const p = document.createElement("p");
 
       p.innerHTML = `
         <strong>${item.date}</strong><br>
@@ -423,22 +384,15 @@
       `;
 
       scheduleList.appendChild(p);
-
     });
 
 
-    const memoryList =
-      document.getElementById(
-        "memory-list"
-      );
+    const memoryList = document.getElementById("memory-list");
 
     memoryItems.forEach((item) => {
+      const div = document.createElement("div");
 
-      const div =
-        document.createElement("div");
-
-      div.className =
-        "memory-item";
+      div.className = "memory-item";
 
       div.innerHTML = `
         <span>${item.date}</span>
@@ -446,340 +400,92 @@
       `;
 
       memoryList.appendChild(div);
-
     });
-
   </script>
 
 
-  <!-- =========================
-       HOME GALLERY
-  ========================= -->
-
   <script>
-
     const homeGalleryList =
-      document.getElementById(
-        "home-gallery-list"
-      );
+      document.getElementById("home-gallery-list");
 
-
-    galleryItems
-      .slice(0, 6)
-      .forEach(
-        (fileName, index) => {
-
+    if (
+      homeGalleryList &&
+      typeof galleryItems !== "undefined"
+    ) {
+      galleryItems
+        .slice(0, 6)
+        .forEach((fileName, index) => {
           const imagePath =
             `./images/${fileName}`;
 
-
           const link =
-            document.createElement(
-              "a"
-            );
+            document.createElement("a");
 
-          link.href =
-            imagePath;
-
-          link.target =
-            "_blank";
-
-          link.rel =
-            "noopener noreferrer";
-
+          link.href = imagePath;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
 
           const image =
-            document.createElement(
-              "img"
-            );
+            document.createElement("img");
 
-          image.src =
-            imagePath;
-
+          image.src = imagePath;
           image.alt =
-            `顎砕きの凛零--lize-- Gallery ${
-              index + 1
-            }`;
+            `顎砕きの凛零--lize-- Gallery ${index + 1}`;
+          image.loading = "lazy";
 
-          image.loading =
-            "lazy";
-
-
-          link.appendChild(
-            image
-          );
-
-          homeGalleryList.appendChild(
-            link
-          );
-
-        }
-      );
-
+          link.appendChild(image);
+          homeGalleryList.appendChild(link);
+        });
+    }
   </script>
 
-
-  <!-- =========================
-       5件表示 + スクロール
-  ========================= -->
-
   <script>
+    function setFiveItemScroll(container) {
+      if (!container) return;
 
-    function setFiveItemScroll(
-      container
-    ) {
-
-      if (!container) {
-        return;
-      }
-
-
-      const items =
-        Array.from(
-          container.children
-        );
-
+      const items = Array.from(container.children);
 
       container.scrollTop = 0;
 
-
       if (items.length <= 5) {
-
-        container.style.maxHeight =
-          "";
-
+        container.style.maxHeight = "";
         return;
-
       }
 
-
-      const first =
-        items[0];
-
-      const fifth =
-        items[4];
-
+      const first = items[0];
+      const fifth = items[4];
 
       const height =
         fifth.offsetTop +
         fifth.offsetHeight -
         first.offsetTop;
 
-
-      container.style.maxHeight =
-        `${height}px`;
-
+      container.style.maxHeight = `${height}px`;
     }
-
 
     function updateFiveItemScrolls() {
-
       setFiveItemScroll(
-        document.getElementById(
-          "news-list"
-        )
+        document.getElementById("news-list")
       );
 
       setFiveItemScroll(
-        document.getElementById(
-          "schedule-list"
-        )
+        document.getElementById("schedule-list")
       );
 
       setFiveItemScroll(
-        document.getElementById(
-          "memory-list"
-        )
+        document.getElementById("memory-list")
       );
-
     }
-
 
     window.addEventListener(
       "load",
       updateFiveItemScrolls
     );
 
-
     window.addEventListener(
       "resize",
       updateFiveItemScrolls
     );
-
-  </script>
-
-
-
-  <!-- =========================
-       HOME TAB SWITCH
-  ========================= -->
-
-  <script>
-
-    const homeSections = [
-      "news",
-      "profile",
-      "music",
-      "gallery",
-      "link"
-    ];
-
-    const tabLinks =
-      document.querySelectorAll(
-        "nav a[data-tab]"
-      );
-
-
-    function showHomeSection(
-      sectionId,
-      updateHash = true
-    ) {
-
-      if (
-        !homeSections.includes(
-          sectionId
-        )
-      ) {
-        sectionId = "news";
-      }
-
-
-      homeSections.forEach(
-        (id) => {
-
-          const section =
-            document.getElementById(
-              id
-            );
-
-          if (section) {
-
-            section.style.display =
-              id === sectionId
-                ? ""
-                : "none";
-
-          }
-
-        }
-      );
-
-
-      tabLinks.forEach(
-        (link) => {
-
-          const active =
-            link.dataset.tab ===
-            sectionId;
-
-          link.classList.toggle(
-            "active",
-            active
-          );
-
-          if (active) {
-
-            link.setAttribute(
-              "aria-current",
-              "page"
-            );
-
-          } else {
-
-            link.removeAttribute(
-              "aria-current"
-            );
-
-          }
-
-        }
-      );
-
-
-      if (updateHash) {
-
-        history.replaceState(
-          null,
-          "",
-          `#${sectionId}`
-        );
-
-      }
-
-
-      if (
-        sectionId === "news" ||
-        sectionId === "profile"
-      ) {
-
-        requestAnimationFrame(
-          updateFiveItemScrolls
-        );
-
-      }
-
-    }
-
-
-    tabLinks.forEach(
-      (link) => {
-
-        link.addEventListener(
-          "click",
-          (event) => {
-
-            event.preventDefault();
-
-            showHomeSection(
-              link.dataset.tab
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-    const firstSection =
-      window.location.hash
-        .replace("#", "");
-
-
-    showHomeSection(
-      homeSections.includes(
-        firstSection
-      )
-        ? firstSection
-        : "news",
-      false
-    );
-
-
-    window.addEventListener(
-      "hashchange",
-      () => {
-
-        const sectionId =
-          window.location.hash
-            .replace("#", "");
-
-        if (
-          homeSections.includes(
-            sectionId
-          )
-        ) {
-
-          showHomeSection(
-            sectionId,
-            false
-          );
-
-        }
-
-      }
-    );
-
   </script>
 
 </body>
