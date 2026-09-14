@@ -60,7 +60,7 @@
         MUSIC
       </a>
 
-      <a href="./gallery.html">
+      <a href="#gallery">
         GALLERY
       </a>
 
@@ -260,6 +260,40 @@
 
 
     <!-- =========================
+         GALLERY
+    ========================= -->
+
+    <section id="gallery">
+
+      <h2>
+        GALLERY
+      </h2>
+
+      <p class="gallery-text">
+        顎砕きの凛零--lize--の<br>
+        イラストやビジュアル。
+      </p>
+
+
+      <div
+        class="gallery-grid"
+        id="home-gallery-list"
+      >
+      </div>
+
+
+      <p class="gallery-more">
+
+        <a href="./gallery.html">
+          GALLERYをもっと見る →
+        </a>
+
+      </p>
+
+    </section>
+
+
+    <!-- =========================
          LINK
     ========================= -->
 
@@ -347,10 +381,11 @@
   <script src="./news-data.js"></script>
   <script src="./schedule-data.js"></script>
   <script src="./memory-data.js"></script>
+  <script src="./gallery-data.js"></script>
 
 
   <!-- =========================
-       NEWS / SCHEDULE / MEMORY
+       NEWS
   ========================= -->
 
   <script>
@@ -374,6 +409,14 @@
 
     });
 
+  </script>
+
+
+  <!-- =========================
+       SCHEDULE
+  ========================= -->
+
+  <script>
 
     const scheduleList =
       document.getElementById(
@@ -394,6 +437,14 @@
 
     });
 
+  </script>
+
+
+  <!-- =========================
+       MEMORY
+  ========================= -->
+
+  <script>
 
     const memoryList =
       document.getElementById(
@@ -416,6 +467,69 @@
       memoryList.appendChild(div);
 
     });
+
+  </script>
+
+
+  <!-- =========================
+       HOME GALLERY
+  ========================= -->
+
+  <script>
+
+    const homeGalleryList =
+      document.getElementById(
+        "home-gallery-list"
+      );
+
+
+    const homeGalleryItems =
+      galleryItems.slice(0, 6);
+
+
+    homeGalleryItems.forEach(
+      (fileName, index) => {
+
+        const imagePath =
+          `./images/${fileName}`;
+
+
+        const link =
+          document.createElement("a");
+
+        link.href =
+          imagePath;
+
+        link.target =
+          "_blank";
+
+        link.rel =
+          "noopener noreferrer";
+
+
+        const image =
+          document.createElement("img");
+
+        image.src =
+          imagePath;
+
+        image.alt =
+          `顎砕きの凛零--lize-- Gallery ${
+            index + 1
+          }`;
+
+        image.loading =
+          "lazy";
+
+
+        link.appendChild(image);
+
+        homeGalleryList.appendChild(
+          link
+        );
+
+      }
+    );
 
   </script>
 
