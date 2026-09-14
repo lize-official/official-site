@@ -48,23 +48,23 @@
 
     <nav>
 
-      <a href="#news">
+      <a href="#news" data-tab="news">
         NEWS
       </a>
 
-      <a href="#profile">
+      <a href="#profile" data-tab="profile">
         PROFILE
       </a>
 
-      <a href="#music">
+      <a href="#music" data-tab="music">
         MUSIC
       </a>
 
-      <a href="#gallery">
+      <a href="#gallery" data-tab="gallery">
         GALLERY
       </a>
 
-      <a href="#link">
+      <a href="#link" data-tab="link">
         LINK
       </a>
 
@@ -608,6 +608,179 @@
 
   </script>
 
+
+
+  <!-- =========================
+       HOME TAB SWITCH
+  ========================= -->
+
+  <script>
+
+    const homeSections = [
+      "news",
+      "profile",
+      "music",
+      "gallery",
+      "link"
+    ];
+
+    const tabLinks =
+      document.querySelectorAll(
+        "nav a[data-tab]"
+      );
+
+
+    function showHomeSection(
+      sectionId,
+      updateHash = true
+    ) {
+
+      if (
+        !homeSections.includes(
+          sectionId
+        )
+      ) {
+        sectionId = "news";
+      }
+
+
+      homeSections.forEach(
+        (id) => {
+
+          const section =
+            document.getElementById(
+              id
+            );
+
+          if (section) {
+
+            section.style.display =
+              id === sectionId
+                ? ""
+                : "none";
+
+          }
+
+        }
+      );
+
+
+      tabLinks.forEach(
+        (link) => {
+
+          const active =
+            link.dataset.tab ===
+            sectionId;
+
+          link.classList.toggle(
+            "active",
+            active
+          );
+
+          if (active) {
+
+            link.setAttribute(
+              "aria-current",
+              "page"
+            );
+
+          } else {
+
+            link.removeAttribute(
+              "aria-current"
+            );
+
+          }
+
+        }
+      );
+
+
+      if (updateHash) {
+
+        history.replaceState(
+          null,
+          "",
+          `#${sectionId}`
+        );
+
+      }
+
+
+      if (
+        sectionId === "news" ||
+        sectionId === "profile"
+      ) {
+
+        requestAnimationFrame(
+          updateFiveItemScrolls
+        );
+
+      }
+
+    }
+
+
+    tabLinks.forEach(
+      (link) => {
+
+        link.addEventListener(
+          "click",
+          (event) => {
+
+            event.preventDefault();
+
+            showHomeSection(
+              link.dataset.tab
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+    const firstSection =
+      window.location.hash
+        .replace("#", "");
+
+
+    showHomeSection(
+      homeSections.includes(
+        firstSection
+      )
+        ? firstSection
+        : "news",
+      false
+    );
+
+
+    window.addEventListener(
+      "hashchange",
+      () => {
+
+        const sectionId =
+          window.location.hash
+            .replace("#", "");
+
+        if (
+          homeSections.includes(
+            sectionId
+          )
+        ) {
+
+          showHomeSection(
+            sectionId,
+            false
+          );
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
 
