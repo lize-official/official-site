@@ -597,3 +597,74 @@ footer p { margin: 2px; }
     margin-bottom: 18px;
   }
 }
+
+
+/* =========================
+   SCHEDULE READABILITY
+   PC + SMARTPHONE
+========================= */
+
+#schedule-list {
+  width: 100%;
+}
+
+#schedule-list > * {
+  margin: 0;
+  padding: 16px 0;
+  line-height: 2;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  white-space: pre-line;
+  border-bottom: 1px solid rgba(229, 90, 145, 0.22);
+}
+
+#schedule-list > *:first-child {
+  padding-top: 4px;
+}
+
+#schedule-list > *:last-child {
+  padding-bottom: 4px;
+  border-bottom: none;
+}
+
+@media screen and (min-width: 601px) {
+  .news-schedule-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 32px;
+  }
+
+  .schedule-column {
+    padding-left: 32px;
+  }
+
+  #schedule-list {
+    font-size: 14px;
+  }
+
+  #schedule-list > * {
+    padding: 16px 4px;
+    line-height: 2.05;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .schedule-column {
+    padding: 18px 16px;
+  }
+
+  #schedule-list {
+    font-size: 14px;
+  }
+
+  #schedule-list > * {
+    padding: 15px 2px;
+    line-height: 2;
+    text-align: left;
+    letter-spacing: 0.01em;
+  }
+
+  #schedule-list p,
+  #schedule-list div {
+    max-width: 100%;
+  }
+}
